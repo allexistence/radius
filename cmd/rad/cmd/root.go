@@ -57,7 +57,6 @@ import (
 	"github.com/radius-project/radius/pkg/cli/cmd/install"
 	install_kubernetes "github.com/radius-project/radius/pkg/cli/cmd/install/kubernetes"
 	"github.com/radius-project/radius/pkg/cli/cmd/radinit"
-	radinit_preview "github.com/radius-project/radius/pkg/cli/cmd/radinit/preview"
 	recipe_pack_delete "github.com/radius-project/radius/pkg/cli/cmd/recipepack/delete"
 	recipe_pack_list "github.com/radius-project/radius/pkg/cli/cmd/recipepack/list"
 	recipe_pack_show "github.com/radius-project/radius/pkg/cli/cmd/recipepack/show"
@@ -84,7 +83,6 @@ import (
 	upgrade_kubernetes "github.com/radius-project/radius/pkg/cli/cmd/upgrade/kubernetes"
 	version "github.com/radius-project/radius/pkg/cli/cmd/version"
 	workspace_create "github.com/radius-project/radius/pkg/cli/cmd/workspace/create"
-	workspace_create_preview "github.com/radius-project/radius/pkg/cli/cmd/workspace/create/preview"
 	workspace_delete "github.com/radius-project/radius/pkg/cli/cmd/workspace/delete"
 	workspace_list "github.com/radius-project/radius/pkg/cli/cmd/workspace/list"
 	workspace_show "github.com/radius-project/radius/pkg/cli/cmd/workspace/show"
@@ -341,8 +339,6 @@ func initSubCommands() {
 	RootCmd.AddCommand(groupCmd)
 
 	initCmd, _ := radinit.NewCommand(framework)
-	previewInitCmd, _ := radinit_preview.NewCommand(framework)
-	wirePreviewSubcommand(initCmd, previewInitCmd)
 	RootCmd.AddCommand(initCmd)
 
 	startupCmd, _ := cmd_startup.NewCommand(framework)
@@ -367,8 +363,6 @@ func initSubCommands() {
 	envCmd.AddCommand(envUpdateCmd)
 
 	workspaceCreateCmd, _ := workspace_create.NewCommand(framework)
-	previewWorkspaceCreateCmd, _ := workspace_create_preview.NewCommand(framework)
-	wirePreviewSubcommand(workspaceCreateCmd, previewWorkspaceCreateCmd)
 	workspaceCmd.AddCommand(workspaceCreateCmd)
 
 	workspaceDeleteCmd, _ := workspace_delete.NewCommand(framework)
